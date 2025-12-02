@@ -8,7 +8,11 @@ def load_tasks():
     """Load saved tasks from file."""
     try:
         with open(FILENAME, "r") as file:
-            tasks = [task.strip() for task in file.readlines()]
+            lines = file.readlines()
+            
+            for line in lines:
+                clean_line = line.strip()
+                tasks.append(clean_line)
         return tasks
     except FileNotFoundError:
         return []
